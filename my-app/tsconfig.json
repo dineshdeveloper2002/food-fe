@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-     "baseUrl": "./src",
+    "baseUrl": "./src",
     "paths": {
       "@container/*": ["*"]
     },
@@ -12,8 +12,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist"
+    "sourceMap": true
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

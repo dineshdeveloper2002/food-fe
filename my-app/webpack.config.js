@@ -20,6 +20,10 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
+            {
+                test: /\.(ico|png|jpe?g|gif|)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'file-loader'
+            }
         ],
     },
     resolve: {
@@ -36,6 +40,14 @@ module.exports = {
     ],
     devtool: 'source-map',
     devServer: {
+        proxy: [
+            {
+                context: ["/api"],
+                target: "http://localhost:8081",
+                changeOrigin: true,
+                secure: false
+            }
+        ],
         historyApiFallback: true,
     }
 };
