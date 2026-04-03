@@ -107,7 +107,7 @@ export const UserListPage = () => {
                                         <DeleteOutline />
                                     </IconButton>
                                 </TableCell>
-                            </TableRow>  
+                            </TableRow>
                         )) : "No users are added "
                         }
 

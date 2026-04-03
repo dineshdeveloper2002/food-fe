@@ -6,6 +6,6 @@ export const routes: renderRouteProps[] = [
         path: '/login',
         element: lazy(() => import('@container/pages/loginpage')),
         title: 'login page',
-        layout: 'none',  // No navbar on login page
+
     }
 ]

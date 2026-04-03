@@ -6,6 +6,6 @@ export const userroutes: renderRouteProps[] = [
         path: '/users',
         element: lazy(() => import('@container/pages/Users')),
         title: 'users',
-        layout: 'app',  // With navbar
+
     }
 ]
