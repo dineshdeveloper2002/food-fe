@@ -28,7 +28,7 @@ pipeline {
         deleteDir()
     }
         }
-      stage('Git fetch latest branch') {
+      stage('Gitoperation') {
             steps {
                 echo "fetching the branch ${params.list}"
                 echo "fetching the branch ${params.BASE_URL}"
@@ -37,7 +37,7 @@ pipeline {
           stage('Git fetch latest branch') {
             steps {
                 echo "fetching the branch ${params.list}"
-                git branch: "${branch}", url: "${repourl}"
+                git branch: "${params.BRANCH}", url: "${repourl}"
             }
         }
 
