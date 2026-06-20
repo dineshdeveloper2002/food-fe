@@ -2,22 +2,26 @@ name: workflow-trigger
 on:
   push:
 jobs:
- buildcheck:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Build started
-      run: 'echo Execution started'
-      
-    - name: checkout
-      uses: actions/checkout@v3
- webpackcompilation:
-   needs: buildcheck
-   runs-on: ubuntu-latest
-   steps:
-     - name: Build compilation
-       run: 'echo npm run build ${{runner}}'
-   
-    
-    
-      
-    
+  buildcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build started
+        run: "echo Execution started"
+
+      - name: checkout
+        uses: actions/checkout@v3
+
+  webpackcompilation:
+    needs: buildcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: node verison setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build compilation
+        run: npm run build
+
+      - name: log check and context
+        run: echo "${{ github.job}}"
