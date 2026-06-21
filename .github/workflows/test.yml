@@ -2,7 +2,7 @@ name: workflow-trigger
 on:
   pull_request:
     branches: [main, fooddev]
-    types: [opened, reopened]
+    types: [opened, reopened, closed]
 
 jobs:
   buildcheck:
