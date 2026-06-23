@@ -1,0 +1,12 @@
+name: env-run
+on:
+  workflow_dispatch:
+env:
+  mongoDB: url
+
+jobs:
+  buildcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: compile data
+        run: "echo test data ${{env.mongoDB}}"
