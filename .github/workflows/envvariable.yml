@@ -8,9 +8,9 @@ jobs:
   buildcheck:
     runs-on: ubuntu-latest
     env:
-      Port: 8080
+      PORT: 8080
     steps:
       - name: compile data
         run: "echo test data ${{env.mongoDB}}"
       - name: test data
-        run: "echo test $Port"
+        run: "echo test $PORT"
