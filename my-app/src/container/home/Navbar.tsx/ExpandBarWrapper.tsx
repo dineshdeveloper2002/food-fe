@@ -40,11 +40,11 @@ export const ExpandBarWrapper = ({ children }: ExpandBarWrapper) => {
     return (
         <div className="w-[320px]">
             <div className='flex justify-center'>
-                <img
+                {/* <img
                     src={expandBarImg}
                     alt="Expand bar"
                     className="w-24"
-                />
+                /> */}
             </div>
             <UserExpandBar />
         </div>

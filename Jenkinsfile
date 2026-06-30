@@ -1,54 +1,31 @@
-pipeline {
-   agent any
-    
+pipeline{
+    agent{
+        any
+    }
     parameters{
-        string(name: 'list', defaultValue: '', description: 'Enter value')
-        string(name:'BRANCH',defaultValue:'',description:'Used to define branch name')
-           choice(
-            name: 'BASE_URL',
-            choices: [
-                'https://qa.rfpio.com/',
-                'https://dev1.rfpio.com/',
-                'https://staging.rfpio.com/',
-                'https://prod.rfpio.com/',
-                'https://pre-release.rfpio.com/',
-                'https://hotfix.rfpio.com/'
+        choice(
+            name:'environment'
+            choices:[
+                'staging',
+                'qa',
+                'prod'
             ],
-            description: 'Select the environment to run tests against'
+            description:'Used for changing env'
+        )
+        string(
+            name:'worker_count',
+            defaultValue:'10',
+            description:'parallel worker list'
         )
     }
-    
-    environment {
-        repourl = "https://github.com/dineshdeveloper2002/food-fe.git"
-    }
-
-    stages {
-        stage('Clean Workspace') {
-    steps {
-        deleteDir()
-    }
-        }
-      stage('Gitoperation') {
-            steps {
-                echo "fetching the branch ${params.list}"
-                echo "fetching the branch ${params.BASE_URL}"
-            }
-        }
-          stage('Git fetch latest branch') {
-            steps {
-                echo "fetching the branch ${params.list}"
-                git branch: "${params.BRANCH}", url: "${repourl}"
-            }
-        }
-
-        stage('Install dependencies') {
-            steps {
-                dir('my-app'){
-                     bat 'npm install'
+    stages{
+        stage('environment file setup'){
+            steps{
+                scripts{
+                def worker = "${params.worker_count}"
+                "echo ${params.worker_count}"
                 }
-               
             }
         }
-
-}
+    }
 }

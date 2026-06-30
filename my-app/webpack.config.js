@@ -43,7 +43,7 @@ module.exports = {
         proxy: [
             {
                 context: ["/api"],
-                target: "http://localhost:8081",
+                target: "http://localhost:8082",
                 changeOrigin: true,
                 secure: false
             }
