@@ -26,6 +26,16 @@ pipeline{
                  checkout scm
             }
         }
+
+        stage('install depedencies'){
+            steps{
+                dir('playwright_framework'){
+                  echo "dependency installtion started"
+                  bat 'npm install'
+                }
+            }
+        }
+
         stage('create env file'){
             steps{
                 script {
@@ -37,5 +47,6 @@ pipeline{
                 }   
             }
         }
+
     }
 }
